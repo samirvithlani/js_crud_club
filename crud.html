@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();">
+                    <div>
+                        <label>FULL NAME</label>
+                        <input type="text" name="fullName" id="fullName">
+                        <span id="fullNameerror"></span>
+                    </div>
+                    <div>
+                        <label>EMP CODE</label>
+                        <input type="text" name="empCode" id="empCode">
+                    </div>
+                    <div>
+                        <label>EMP SALARY</label>
+                        <input type="text" name="empSalary" id="empSalary">
+                    </div>
+                    <div>
+                        <label>EMP CITY</label>
+                        <input type="text" name="empCity" id="empCity">
+                    </div>
+                    <div>
+
+                        <input type="submit" value="SUBMIT">
+                        <input type="reset" value="RESET">
+                    </div>
+
+                </form>
+            </td>
+            <td>
+                <table id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Emp Code</th>
+                            <th>Emp Salary</th>
+                            <th>Emp City</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- js -->
+                    </tbody>
+
+
+                </table>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <script src='crud.js'></script>
+</body>
+
+</html>
