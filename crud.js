@@ -1,3 +1,5 @@
+var selectedRow = null
+
 function onFormSubmit() {
 
 
@@ -5,7 +7,13 @@ function onFormSubmit() {
     if (validate()) {
         var formData = readFormData();
         console.log(formData)
-        insertNewRecord(formData)
+
+        if (selectedRow == null) {
+            insertNewRecord(formData)
+        }
+        else {
+            updateRecord(formData)
+        }
         resetForm()
     }
 
@@ -44,7 +52,7 @@ function insertNewRecord(data) {
     cell4.innerHTML = data.empCity
 
     cell4 = newRow.insertCell(4)
-    cell4.innerHTML = `<a onClick = "onDelete(this)">DELETE</a>`
+    cell4.innerHTML = `<a onClick = "onDelete(this)">DELETE</a><a onClick = "onEdit(this)">EDIT</a>`
 }
 function resetForm() {
 
@@ -52,10 +60,29 @@ function resetForm() {
     document.getElementById("empCode").value = "";
     document.getElementById("empSalary").value = "";
     document.getElementById("empCity").value = "";
+    selectedRow = null;
 
 
 }
 
+function onEdit(td) {
+
+    selectedRow = td.parentElement.parentElement;
+
+    document.getElementById("fullName").value = selectedRow.cells[0].innerHTML
+    document.getElementById("empCode").value = selectedRow.cells[1].innerHTML
+    document.getElementById("empSalary").value = selectedRow.cells[2].innerHTML
+    document.getElementById("empCity").value = selectedRow.cells[3].innerHTML
+
+}
+function updateRecord(formData) {
+
+    selectedRow.cells[0].innerHTML = formData.fullName;
+    selectedRow.cells[1].innerHTML = formData.empCode;
+    selectedRow.cells[2].innerHTML = formData.empSalary;
+    selectedRow.cells[3].innerHTML = formData.empCity;
+
+}
 function validate() {
 
     isValid = true;
